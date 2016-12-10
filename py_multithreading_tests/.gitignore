@@ -4,3 +4,4 @@
 .project
 .pydevproject
 skpyext_wrap*
+skpyext.py

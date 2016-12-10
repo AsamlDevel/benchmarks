@@ -13,7 +13,7 @@ from time import sleep
 usleep = lambda x: time.sleep(x/1000000.0)
 
 NUM_CORES = 4
-NUM_TO_INCREMENTS = 1000*1000*1000 * NUM_CORES
+NUM_TO_INCREMENTS = 100*1000*1000 * NUM_CORES
 gcnt = 0
 
 the_lock = thread.allocate_lock()
@@ -88,7 +88,9 @@ def simple_incrementor():
 
 def main():
     print sys.getcheckinterval()
-    sys.setcheckinterval(10000000)
+    #next line is changing python multithreading behavior
+    #the argument define the number of instructions before possible next thread switching
+    sys.setcheckinterval(1000000)
     print sys.getcheckinterval()
     global gcnt
     global sem
